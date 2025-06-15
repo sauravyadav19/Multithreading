@@ -10,7 +10,10 @@ void downloadFile(int fileNumber){
 }
 int main(){
 
+    auto startTime = chrono::high_resolution_clock::now();
     downloadFile(1);
-
+    auto endTime = chrono::high_resolution_clock::now();
+    auto totalDuration = chrono::duration_cast<chrono::seconds>(endTime - startTime).count();
+    cout<<"The total time Taken : " << totalDuration<<endl;
     return 0;
 }
