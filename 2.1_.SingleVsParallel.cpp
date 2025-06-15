@@ -1,12 +1,16 @@
 #include<iostream>
+#include<thread>
+#include<chrono>
 using namespace std;
 
-//**To-Do**
-//Implement a sequential simulation of downloading a file
-    // using sleep_for make the working thread sleep for 2 seconds
-//Clock the time
-
+void downloadFile(int fileNumber){
+    cout<<"Starting download of file_"<<fileNumber<<".txt\n";
+    std::this_thread::sleep_for(chrono::seconds(2));
+    cout<<"Finish downloading file_"<<fileNumber<<".txt\n";
+}
 int main(){
+
+    downloadFile(1);
 
     return 0;
 }
