@@ -3,6 +3,13 @@
 #include<thread>
 #include<chrono> //Header file for handling time related work
 using namespace std;
+//when we are saying std is the namespace, we mean that whatever is defined by standard library namespace, use that and not
+// the one someone else defined it; the structure look like this:
+//      std/
+    //      ├── thread          <- class for creating new threads
+    //      ├── this_thread     <- namespace with utilities for current thread
+    //      |── cout            <- object for printing to terminal
+    //      ├── chrono          <- namespace for time
 
 void downloadFile(int fileNumber){
     cout<<"Starting download of file_"<<fileNumber<<".txt\n";
