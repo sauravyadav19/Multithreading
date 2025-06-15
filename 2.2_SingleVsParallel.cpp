@@ -24,10 +24,12 @@ int main(){
         //std::thread(Callable&& f, Args&&... args);
         //so whatever argument we want to pass to the function that we are passing to thread and  we want to give its
         //parameter as an arugment meaning downloadfile(i) => thread(download,i)
-        threads.emplace_back(downloadFile,i);
+        threads.emplace_back(downloadFile,int(i));
         // the above line of code is just a shorter and more memory efficient code of following:
             //std::thread t(download_file, i);
             //threads.push_back(std::move(t));
+        //when passing the arugments to the fucntion that will be called its better to explictly say its type or else it would 
+        //lead to some unexpected result. so instead of `threads.emplace_back(downloadFile,i);` we do this threads.emplace_back(downloadFile,int(i));
 
     }
         // join them
