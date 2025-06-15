@@ -12,8 +12,12 @@ int main(){
 
     auto startTime = chrono::high_resolution_clock::now();
     downloadFile(1);
+    downloadFile(2);
+    downloadFile(3);
+    downloadFile(4);
+    downloadFile(5);
     auto endTime = chrono::high_resolution_clock::now();
     auto totalDuration = chrono::duration_cast<chrono::seconds>(endTime - startTime).count();
-    cout<<"The total time Taken : " << totalDuration<<endl;
+    cout<<"The total time Taken : " << totalDuration <<" seconds" <<endl;
     return 0;
 }
