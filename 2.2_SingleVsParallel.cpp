@@ -42,3 +42,28 @@ int main(){
 
    return 0;
 }
+
+/*
+******conclusion******
+1. Time
+ => total time taken in sequential (single thread) = numOfFiles * time Taken by one file
+                                                   = 5 * 2
+                                                   = 10 seconds
+ => total time taken in parallel (multiple threads) = max(Time by one file)
+                                                    = max(2)
+                                                    = 2 seconds
+2. The ouput might look like "jumbled"
+    Starting download of file_1.txt
+    Starting download of file_2.txt
+    Starting download of file_3.txt
+    Starting download of file_4.txt
+    Starting download of file_5.txt
+    Finish downloading file_Finish downloading file_2.txt
+    1.txt
+    Finish downloading file_3.txt
+    Finish downloading file_4.txt
+    Finish downloading file_5.txt
+    The total time Taken : 2 seconds
+=> this is happending becasue all the threads are trying to write to the output at the same time, as output stream is shared resource
+=> how to solve? Next topic
+*/
