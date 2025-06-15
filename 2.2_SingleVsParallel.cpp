@@ -13,6 +13,10 @@ void downloadFile(int fileNumber){
 int main(){
 
     auto startTime = chrono::high_resolution_clock::now();
+    //Implement the thread-ed code
+        //create multiple threads using vector
+        //assing each of thread with task of dowloading a file
+        // join them
     auto endTime = chrono::high_resolution_clock::now();
     auto totalDuration= chrono::duration_cast<chrono::seconds>(endTime - startTime).count();
     cout<<"The total time Taken : " << totalDuration <<" seconds" <<endl;
