@@ -27,12 +27,27 @@ This Locking and Unlocking is using Mutex in C++
 #include<thread>
 #include<vector>
 #include <chrono>
+#include <mutex>
 using namespace std;
+mutex outputMutex; //will control (lock and unlock) the output
 
 void downloadFile(int id){
-    cout<<"Startig download of file_"<<id<<".txt\n";
+    
+    {   lock_guard<mutex> lock(outputMutex);
+        //creating a variable called lock of type lock_guard and initalizing it with the value of outputMutex
+        cout<<"Startig download of file_"<<id<<".txt\n";
+    }
+    // we are puting our code in {} because lock_guard auto unlocks when it goes out of scope so we do not have
+    //to manually unlock the variable lock,
     std::this_thread::sleep_for(chrono::seconds(5));
-    cout<<"Finish downloading file_"<<id<<".txt\n";
+
+    {   lock_guard<mutex> lock(outputMutex);
+        cout<<"Finish downloading file_"<<id<<".txt\n";
+    }
+
+    //LOCKING During shared resource
+    //UNLOCKING and doing whatever does not need locking
+    //Again LOCKING during a shared resource
 }
 
 int main(){
