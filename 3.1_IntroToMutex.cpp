@@ -22,3 +22,28 @@ and then Thread_2 get the access
 
 This Locking and Unlocking is using Mutex in C++
 */
+
+#include<iostream>
+#include<thread>
+#include<vector>
+#include <chrono>
+using namespace std;
+
+void downloadFile(int id){
+    cout<<"Startig download of file_"<<id<<".txt\n";
+    std::this_thread::sleep_for(chrono::seconds(5));
+    cout<<"Finish downloading file_"<<id<<".txt\n";
+}
+
+int main(){
+    vector<thread> threads;
+
+    for(int i = 1; i <=5; i++){
+        threads.emplace_back(downloadFile,int(i));
+    }
+
+    for(auto &t: threads){
+        t.join();
+    }
+    return 0;
+}
